@@ -273,16 +273,10 @@
 ;; frame locals
 ;;
 
-(if (eq xref-running-under 'emacs)
-	(progn
-	  (defvar xref-this-frame-dispatch-data nil)
-	  (make-variable-frame-local 'xref-this-frame-dispatch-data)
-	  ))
-
 (defun xref-get-this-frame-dispatch-data ()
   (let ((res))
 	(if (eq xref-running-under 'emacs)
-		(setq res xref-this-frame-dispatch-data)
+		(setq res (cdr (assoc 'xref-this-frame-dispatch-data (frame-parameters (selected-frame)))))
 	  (setq res (frame-property (selected-frame) 'xref-this-frame-dispatch-data nil))
 	  )
 	res
@@ -290,7 +284,8 @@
 
 (defun xref-set-this-frame-dispatch-data (dispatch-data)
   (if (eq xref-running-under 'emacs)
-	  (setq xref-this-frame-dispatch-data dispatch-data)
+	  (modify-frame-parameters (selected-frame)
+						(list (cons 'xref-this-frame-dispatch-data dispatch-data)))
 	(set-frame-property (selected-frame) 
 						'xref-this-frame-dispatch-data 
 						dispatch-data)
