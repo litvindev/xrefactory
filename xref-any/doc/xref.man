@@ -144,6 +144,11 @@ the directories are scanned in left-to-right order. If the directory is specifie
 using relative path, it is considered relative to the currently
 parsed file directory.
 .TP
+.B \-include file
+Process file
+.I file
+as input before processing the regular input file.
+.TP
 .BI "\-D" "name"\c
 \&
 Predefine \c
@@ -523,7 +528,7 @@ causes
 that all generated HTML files will be compressed and the links are
 correctly generated to those compressed files.
 .TP
-.B \-include file (or \-stdop file)
+.B \-optinclude file (or \-stdop file)
 This option causes that the file `\|\c
 .I file\c
 \&\|' is read and scanned for further options. When used in an .xrefrc file
