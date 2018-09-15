@@ -29,7 +29,7 @@
 ;; profit from  Xrefactory's project  management.  Of course,  we also
 ;; acknowledge the developers and maintainers of GNU Emacs and XEmacs.
 
-(provide 'xref)
+(provide 'xrefactory2)
 
 (load "xrefprotocol")
 
@@ -2310,7 +2310,7 @@ tries to delete Xrefactory windows first.
 			   (cons "" nil)))
 	(set-process-filter (car (eval proc)) filter)
 	(setq process-connection-type oldpct)
-	(process-kill-without-query (car (eval proc)))
+	(set-process-query-on-exit-flag (car (eval proc)) nil)
 ))
 
 (defvar xref-interrupt-dialog-map (make-sparse-keymap "Xref interrupt dialog"))
