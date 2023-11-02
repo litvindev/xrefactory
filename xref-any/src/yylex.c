@@ -559,6 +559,7 @@ static void processInclude(S_position *ipos, int nextFlag) {
 	FILE *nyyin;
 	char *fname;
 	char *ccc, *cc2;
+	char fn[MAX_FILE_NAME_SIZE];
 	int lex,l,h,v,len;
 	S_position pos;
 	GetLexA(lex, cc2);
@@ -576,14 +577,27 @@ assert(0);
 		cInput.cc = cc2;		/* unget lexem */
 		lex = yylex();
 		if (lex == STRING_LITERAL) {
-			cInput = macStack[0];		// hack, cut everything pending
-			macStacki = 0;
+			if (macStacki != 0) {
+				cInput = macStack[0];		// hack, cut everything pending
+				macStacki = 0;
+			}
 			processInclude2(ipos, '\"', yytext, nextFlag);
 		} else if (lex == '<') {
-			// TODO!!!!
-			warning(ERR_ST,"Include <> after macro expansion not yet implemented, sorry\n\tuse \"\" instead");
+			ccc = fn;
+			lex = yylex();
+			while (lex != '>' && lex != '\n' && lex != 0) {
+				strcpy(ccc, yytext);
+				ccc += strlen(ccc);
+				lex = yylex();
+			}
+			if (ccc != fn) {
+				if (macStacki != 0) {
+					cInput = macStack[0];		// hack, cut everything pending
+					macStacki = 0;
+				}
+				processInclude2(ipos, '<', fn, nextFlag);
+			}
 		}
-		//do lex = yylex(); while (lex != '\n');
 	}
 	return;
  endOfMacArg:	assert(0);
