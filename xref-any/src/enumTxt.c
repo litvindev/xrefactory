@@ -263,6 +263,7 @@ char * storagesName[] = {
 	"StorageExtern",
 	"StorageConstant",
 	"StorageStatic",
+	"StorageThreadLocal",
 	"StorageTypedef",
 	"StorageMutable",
 	"StorageRegister",
@@ -313,6 +314,7 @@ char * typesName[] = {
 	"TypeLongSignedInt",
 	"TypeFloat",
 	"TypeDouble",
+	"TypeBoolean",
 	"TypeStruct",
 	"TypeUnion",
 	"TypeEnum",
@@ -341,7 +343,6 @@ char * typesName[] = {
 	"TypeByte",
 	"TypeShort",
 	"TypeLong",
-	"TypeBoolean",
 	"TypeNull",
 	"TypeOverloadedFunction",
 	"TypeReserve7",
@@ -381,13 +382,6 @@ char * typesName[] = {
 	"MAX_TYPE"
 };
 
-char * __codecvt_resultName[] = {
-	"__codecvt_ok",
-	"__codecvt_partial",
-	"__codecvt_error",
-	"__codecvt_noconv"
-};
-
 char * refsFilterLevelsName[] = {
 	"RFilterAll",
 	"RFilterAddrVal",
@@ -424,6 +418,8 @@ char * miscellaneousName[] = {
 	"ACC_CHECK_NO",
 	"VISIB_CHECK_YES",
 	"VISIB_CHECK_NO",
+	"SEARCH_IN_MEMBERS_YES",
+	"SEARCH_IN_MEMBERS_NO",
 	"CUT_OVERRIDEN_YES",
 	"CUT_OVERRIDEN_NO",
 	"CX_FILE_ITEM_GEN",
@@ -434,6 +430,7 @@ char * miscellaneousName[] = {
 	"CX_HTML_SECOND_PASS",
 	"CX_MENU_CREATION",
 	"CX_BY_PASS",
+	"CX_BY_PASS2",
 	"HTML_GEN",
 	"HTML_NO_GEN",
 	"MEM_ALLOC_ON_SM",
