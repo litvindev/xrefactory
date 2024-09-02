@@ -481,11 +481,12 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
 	char 			nn[MAX_FILE_NAME_SIZE];
 	char 			rdir[MAX_FILE_NAME_SIZE];
 	char 			*nnn;
-	int 			nnlen,dlen,fdlen,nmlen,i;
+	int 			nnlen,dlen,fdlen,nmlen,i,foundFlag;
 	er = NULL; r = NULL;
+	foundFlag = 0;
 	nmlen = strlen(name);
 	copyDir(rdir, cFile.fileName, &fdlen);
-	if (pchar!='<') {
+	if (! nextFlag && pchar!='<') {
 /*&fprintf(dumpOut, "dlen == %d\n",dlen);&*/
 		strcpy(nn,normalizeFileName(name, rdir));
 /*&fprintf(dumpOut, "try to open %s\n",nn);&*/
@@ -506,7 +507,12 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
 			nnlen = dlen+nmlen;
 			nn[nnlen]=0;
 			nnn = normalizeFileName(nn, s_cwd);
-			if (! nextFlag || strcmp(nnn, cFile.fileName) != 0) {
+			if (nextFlag
+				&& dlen>0 && strncmp(nn, rdir, dlen-1) == 0) {
+				foundFlag = 1;
+			}
+			if (! nextFlag
+				|| (foundFlag && dlen>0 && strncmp(nn, rdir, dlen-1) != 0)) {
 //&fprintf(dumpOut, "try to open <%s>\n",nn);
 				er = editorFindFile(nn);
 				if (er==NULL) r = fopen(nn,"r");

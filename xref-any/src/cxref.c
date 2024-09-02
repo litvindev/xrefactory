@@ -672,7 +672,7 @@ static void olGetAvailableRefactorings() {
 }
 
 
-static int olcxOnlyParseNoPushing(opt) {
+static int olcxOnlyParseNoPushing(int opt) {
 	return(
 		opt==OLO_GLOBAL_UNUSED
 		|| opt==OLO_LOCAL_UNUSED
