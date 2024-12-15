@@ -608,22 +608,20 @@ void addInitializerRefs(
 	S_idIdentList *ll;
 	S_idIdent* id;
 	S_typeModifiers *tt;
-	S_reference *ref;
 	S_symbol *rec;
-	for(ll=idl; ll!=NULL; ll=ll->next) {
+	for(; idl!=NULL; idl=idl->next) {
 		tt = t;
-		rec = NULL;
-		for (id = &ll->idi; id!=NULL; id=id->next) {
-		    if (id->name == NULL) continue;
+		for (id = &idl->idi; id!=NULL; id=id->next) {
 			if (tt->m == TypeArray) tt = tt->next;
+			if (id->name == NULL) continue;
 			if (tt->m != TypeStruct && tt->m != TypeUnion) break;
-			ref = findStrRecordFromType(tt, id, &rec, SEARCH_IN_MEMBERS_YES, CLASS_TO_ANY);
-			if (NULL == ref) break;
+			rec = NULL;
+			if (findStrRecordFromType(tt, id, &rec, SEARCH_IN_MEMBERS_YES, CLASS_TO_ANY) == NULL) break;
 			assert(rec);
 			tt = rec->u.type;
 		}
-		if (ll->down!=NULL && rec!=NULL) {
-			addInitializerRefs(rec->u.type, ll->down);
+		if (idl->down!=NULL) {
+			addInitializerRefs(tt, idl->down);
 		}
 	}
 }
