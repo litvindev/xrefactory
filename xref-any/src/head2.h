@@ -21,13 +21,13 @@
 #define SIZE_TMP_MEM		       5000	/* temporary strings, not error messages */
 
 #define SIZE_ppMemory 	  	      20000	/* macro args name in define */
-#define SIZE_mbMemory 		    2000000	/* pending macro expansions */
-#define SIZE_opiMemory		     300000	/* memory used to store options strings */
-#define SIZE_workMemory        10000000	/* parsing stack memory */
+#define SIZE_mbMemory 		   20000000	/* pending macro expansions */
+#define SIZE_opiMemory		    4800000	/* memory used to store options strings */
+#define SIZE_workMemory        20000000	/* parsing stack memory */
 #define SIZE_tmpWorkMemory       400000	/* additional tmp parsing stack memory */
 #define SIZE_ftMemory 		    8000000	/* memory for file (and class) table */
 
-#define SIZE_ppmMemory	       15000000	/* macro definitions or java class files */
+#define SIZE_ppmMemory	       30000000	/* macro definitions or java class files */
 #ifdef SMALL_OLCX_MEMORY
 #define SIZE_olcxMemory        15000000	/* memory for browsing symbol stack */
 #else
@@ -67,7 +67,7 @@
 /* ***************** several (mainly string size) bornes *************** */
 
 #define MAX_REF_LIST_LINE_LEN         1000    /* how long part of src is copied to list */
-#define TMP_STRING_SIZE		           350
+#define TMP_STRING_SIZE		          1000
 #define REFACTORING_TMP_STRING_SIZE  10000
 #define MACRO_NAME_SIZE                500
 #define COMPLETION_STRING_SIZE         500	/* size of line in completion list */
