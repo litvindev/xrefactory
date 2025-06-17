@@ -93,7 +93,8 @@
 ;; current platform identification (will be used in default settings)
 
 (if (or (string-match "-nt" system-configuration) 
-		(string-match "-win" system-configuration))
+		(string-match "-win" system-configuration)
+		(string-match "-mingw32" system-configuration))
 	(defvar xref-platform 'windows)
   (defvar xref-platform 'unix)
 )
