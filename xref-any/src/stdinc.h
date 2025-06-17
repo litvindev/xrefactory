@@ -12,12 +12,11 @@
 #ifdef __OS2__			/*SBD*/
 #include <os2.h>		/*SBD*/
 #else					/*SBD*/
-#include <unistd.h>		/*SBD*/
 #include <dirent.h>		/*SBD*/
 #endif					/*SBD*/
 #endif					/*SBD*/
 
-
+#include <unistd.h>		/*SBD*/
 #include <stdio.h>		/*SBD*/
 #include <stdlib.h>		/*SBD*/
 #include <ctype.h>		/*SBD*/
