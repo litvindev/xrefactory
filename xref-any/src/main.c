@@ -2200,7 +2200,11 @@ static void getAndProcessGccIncludeOptions() {
 	isActiveSect = 0;
 	ttt = crTmpFileName_st();
 	assert(strlen(ttt)+1 < MAX_FILE_NAME_SIZE);
+#if defined (__WIN32__)
+	sprintf(tmpBuff, "set LANG=C && cpp -v -x %s -o NUL - <NUL >%s 2>&1", lang, ttt);
+#else
 	sprintf(tmpBuff, "LANG=C cpp -v -x %s -o /dev/null /dev/null >%s 2>&1", lang, ttt);
+#endif
 	system(tmpBuff);
 	ff = fopen(ttt,"r");
 	if (ff==NULL) return;
@@ -2239,7 +2243,11 @@ static void getAndProcessGccDefineOptions() {
 	}
 	ttt = crTmpFileName_st();
 	assert(strlen(ttt)+1 < MAX_FILE_NAME_SIZE);
+#if defined (__WIN32__)
+	sprintf(tmpBuff, "set LANG=C && cpp -dM -x %s -o %s NUL 1>NUL 2>&1", lang, ttt);
+#else
 	sprintf(tmpBuff, "LANG=C cpp -dM -x %s -o %s /dev/null 1>/dev/null 2>&1", lang, ttt);
+#endif
 	system(tmpBuff);
 	ff = fopen(ttt,"r");
 	if (ff==NULL) return;
