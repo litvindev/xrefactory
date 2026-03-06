@@ -2,7 +2,7 @@ DEST	      = .
 
 HDRS	      = defs.h
 
-CFLAGS	      = -O -DNDEBUG
+CFLAGS	      = -O -DNDEBUG -std=gnu89
 
 LDFLAGS	      =
 
