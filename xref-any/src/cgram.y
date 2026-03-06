@@ -105,7 +105,7 @@
 
 /* c-special */
 %token TYPEDEF EXTERN AUTO REGISTER SIGNED UNSIGNED STRUCT UNION ENUM
-%token SIZEOF TYPEOF RESTRICT _ATOMIC _BOOL _THREADLOCAL _NORETURN
+%token SIZEOF TYPEOF RESTRICT _ATOMIC BOOL THREADLOCAL _NORETURN
 /* hmm */
 %token ANONYME_MOD
 
@@ -119,7 +119,7 @@
 
 /* c++-special */
 %token FRIEND OPERATOR NAMESPACE TEMPLATE DELETE MUTABLE EXPLICIT
-%token WCHAR_T BOOL USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
+%token WCHAR_T USING ASM_KEYWORD EXPORT VIRTUAL INLINE TYPENAME
 %token DYNAMIC_CAST STATIC_CAST REINTERPRET_CAST CONST_CAST TYPEID
 
 /* yacc-special */
@@ -867,7 +867,7 @@ storage_class_specifier
 	: TYPEDEF		{ $$.d = StorageTypedef; }
 	| EXTERN		{ $$.d = StorageExtern; }
 	| STATIC		{ $$.d = StorageStatic; }
-	| _THREADLOCAL	{ $$.d = StorageThreadLocal; }
+	| THREADLOCAL	{ $$.d = StorageThreadLocal; }
 	| AUTO			{ $$.d = StorageAuto; }
 	| REGISTER		{ $$.d = StorageAuto; }
 	;
@@ -894,7 +894,7 @@ type_specifier1
 	| FLOAT		{ $$.d = TypeFloat; }
 	| DOUBLE	{ $$.d = TypeDouble; }
 	| VOID		{ $$.d = TypeVoid; }
-	| _BOOL		{ $$.d = TypeBoolean; }
+	| BOOL		{ $$.d = TypeBoolean; }
 	;
 
 type_specifier2

@@ -530,12 +530,14 @@ S_typeModificationsInit s_typeModificationsInit[] = {
 S_tokenNameIni s_tokenNameIniTab[] = {
 	{"asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
 	{"auto", 		AUTO			,LAN_C | LAN_YACC | LAN_CCC},
+	{"bool",		BOOL			,LAN_C | LAN_YACC | LAN_CCC},
 	{"enum", 		ENUM			,LAN_C | LAN_YACC | LAN_CCC},
 	{"extern",		EXTERN			,LAN_C | LAN_YACC | LAN_CCC},
 	{"inline",		INLINE			,LAN_C | LAN_YACC | LAN_CCC},
 	{"register",	REGISTER		,LAN_C | LAN_YACC | LAN_CCC},
 	{"signed",		SIGNED			,LAN_C | LAN_YACC | LAN_CCC},
 	{"sizeof",		SIZEOF			,LAN_C | LAN_YACC | LAN_CCC},
+	{"thread_local",THREADLOCAL		,LAN_C | LAN_YACC | LAN_CCC},
 	{"typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
 	{"struct",		STRUCT			,LAN_C | LAN_YACC | LAN_CCC},
 	{"typedef",		TYPEDEF			,LAN_C | LAN_YACC | LAN_CCC},
@@ -561,7 +563,6 @@ S_tokenNameIni s_tokenNameIniTab[] = {
 	{"protected",	PROTECTED		,LAN_JAVA | LAN_CCC},
 	{"public",		PUBLIC			,LAN_JAVA | LAN_CCC},
 	{"super",		SUPER			,LAN_JAVA},
-
 	{"synchronized",SYNCHRONIZED	,LAN_JAVA},
 	{"strictfp",	STRICTFP		,LAN_JAVA},
 	{"this",		THIS			,LAN_JAVA | LAN_CCC},
@@ -569,13 +570,10 @@ S_tokenNameIni s_tokenNameIniTab[] = {
 	{"throws",		THROWS			,LAN_JAVA},
 	{"transient",	TRANSIENT		,LAN_JAVA},
 	{"try",			TRY				,LAN_JAVA | LAN_CCC},
-
 	{"true",		TRUE_LITERAL	,LAN_JAVA | LAN_CCC},
 	{"false",		FALSE_LITERAL	,LAN_JAVA | LAN_CCC},
 	{"null",		NULL_LITERAL	,LAN_JAVA},
 
-
-	{"bool",				BOOL			,LAN_CCC},
 	{"const_cast",			CONST_CAST		,LAN_CCC},
 	{"delete",				DELETE			,LAN_CCC},
 	{"dynamic_cast",		DYNAMIC_CAST	,LAN_CCC},
@@ -616,11 +614,11 @@ S_tokenNameIni s_tokenNameIniTab[] = {
 	{"volatile",	VOLATILE		,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
 	{"while", 		WHILE			,LAN_C | LAN_YACC | LAN_CCC | LAN_JAVA},
 
-	{"restrict",		RESTRICT		,LAN_C},
-	{"_Atomic",			_ATOMIC			,LAN_C},
-	{"_Bool",			_BOOL			,LAN_C},
-	{"_Noreturn",		_NORETURN		,LAN_C},
-	{"_Thread_local",	_THREADLOCAL	,LAN_C},
+	{"_Atomic",			_ATOMIC			,LAN_C | LAN_YACC},
+	{"_Bool",			BOOL			,LAN_C | LAN_YACC},
+	{"_Noreturn",		_NORETURN		,LAN_C | LAN_YACC},
+	{"_Thread_local",	THREADLOCAL		,LAN_C | LAN_YACC},
+	{"restrict",		RESTRICT		,LAN_C | LAN_YACC},
 
 /*
 	{"token", 		TOKEN			,LAN_YACC},
@@ -722,7 +720,7 @@ S_tokenNameIni s_tokenNameIniTab2[] = {
 	{"__asm",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
 	{"__asm__",			ASM_KEYWORD		,LAN_C | LAN_YACC | LAN_CCC},
 	{"__label__",		LABEL			,LAN_C | LAN_YACC | LAN_CCC},
-	{"__threadd",		_THREADLOCAL	,LAN_C | LAN_YACC | LAN_CCC},
+	{"__threadd",		THREADLOCAL		,LAN_C | LAN_YACC | LAN_CCC},
 	{"__restrict",		RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
 	{"__restrict__",	RESTRICT		,LAN_C | LAN_YACC | LAN_CCC},
 	{"__typeof",		TYPEOF			,LAN_C | LAN_YACC | LAN_CCC},
